@@ -7,13 +7,13 @@ var client = new Client();
 var port = process.env.port || 3000;
 
 //Passport variables to change
-const oauthId = 5;
+const oauthId = 1;
 const oauthRedirectUri = "http://localhost:3000/redirect";
-const oauthClientSecret = "yrS5g7RE4iUB9SXNtRGZzAhi4ohIcEwyfiZnqFjs";
+const oauthClientSecret = "7fAAjvEWvrrncCIOBQarvSXVvKlwVi1if7XTdZqE";
 
 //  Laravel app route to authorize the Oauth app
-const authUri = "http://localhost:8001/oauth/authorize";
-const tokenUri= "http://localhost:8001/oauth/token";
+const authUri = "http://localhost:8000/oauth/authorize";
+const tokenUri= "http://localhost:8000/oauth/token";
 
 
 app.get('/', (req,res)=>{

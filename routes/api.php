@@ -34,5 +34,21 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::delete('products/{product}','ProductController@delete');    
 });
 
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    
+    /** Using the variable {users}, is possible to use implicit route
+     * model binding which makes easier the query for a 
+     * specific model inside the controller
+    */
+    Route::get('users','UserAPIController@index');
+    Route::get('users/{user}','UserAPIController@show');
+    Route::post('users','UserAPIController@store');
+    Route::put('users/{user}','UserAPIController@update');
+    Route::delete('users/{user}','UserAPIController@delete');    
+});
+
 
 
