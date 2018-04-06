@@ -19,8 +19,5 @@ class TestingSectionsSeeder extends Seeder
             'section' => 'roles',
         ]);
 
-        DB::table('sections')->insert([
-            'section' => 'cof',
-        ]);
     }
 }

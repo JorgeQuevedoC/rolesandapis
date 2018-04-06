@@ -28,7 +28,7 @@ class SectionController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
+        $perPage = 10;
 
         if (!empty($keyword)) {
             $section = Section::where('section', 'LIKE', "%$keyword%")
@@ -67,13 +67,6 @@ class SectionController extends Controller
         return redirect('admin/section')->with('flash_message', 'Section added!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     *
-     * @return \Illuminate\View\View
-     */
     public function show($id)
     {
         $section = Section::findOrFail($id);

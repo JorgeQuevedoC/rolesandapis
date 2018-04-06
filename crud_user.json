@@ -1,0 +1,41 @@
+{
+    "fields": [
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "email",
+            "type": "email"
+        },
+        {
+            "name": "privilege_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "password",
+            "type": "password"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "privilege_id",
+            "references": "id",
+            "on": "privileges"
+        }
+    ],
+    "validations": [
+        {
+            "field": "name",
+            "rules": "required|unique:users"
+        },
+        {
+            "field": "email",
+            "rules": "required|email|unique:users"
+        },
+        {
+            "field": "password",
+            "rules": "required"
+        }
+    ]
+}

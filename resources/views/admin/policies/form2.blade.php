@@ -25,28 +25,33 @@ $sections = DB::table('sections')->selectRaw('*')->get();
         {!! $errors->first('section_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<br />
 <!--*********************************************  MY CHECKBOXES  *********************************************-->
 <div class="row">
 @foreach ($roles as $privilege)
-    <div class="col-md-4">
-        <div class="form-group form-check form-check-inline">
-            @php
-            $column = $privilege->role_header;
-            @endphp
-            @if ($policy->$column == 1)
-                <input class="form-check-input" name="{{$privilege->role_header}}" type="checkbox" id="{{$privilege->role_header}}" value=1 checked>
-                <label class="form-check-label" for="{{$privilege->role_header}}">{{strtoupper($privilege->privilege)}}</label>
-            @elseif ($policy->$column == 0)
-                <input class="form-check-input" name="{{$privilege->role_header}}" type="checkbox" id="{{$privilege->role_header}}" value=1>
-                <label class="form-check-label" for="{{$privilege->role_header}}">{{strtoupper($privilege->privilege)}}</label>
-            @else
-                <label class="form-check-label" for="{{$privilege->role_header}}">Problem loading database</label>
-            @endif          
+     @if ($privilege->privilege != 'empty')
+        <div class="col-md-4">
+            <div class="form-group form-check form-check-inline">
+                @php
+                $column = $privilege->role_header;
+                @endphp
+                @if ($policy->$column == 1)
+                    <input type="hidden" name="{{$privilege->role_header}}" value="0" id="{{$privilege->role_header}}" />
+                    <input class="form-check-input" name="{{$privilege->role_header}}" type="checkbox" id="{{$privilege->role_header}}" value=1 checked>
+                    <label class="form-check-label" for="{{$privilege->role_header}}">{{strtoupper($privilege->privilege)}}</label>
+                @elseif ($policy->$column == 0)
+                    <input type="hidden" name="{{$privilege->role_header}}" value="0" id="{{$privilege->role_header}}" />
+                    <input class="form-check-input" name="{{$privilege->role_header}}" type="checkbox" id="{{$privilege->role_header}}" value=1>
+                    <label class="form-check-label" for="{{$privilege->role_header}}">{{strtoupper($privilege->privilege)}}</label>
+                @else
+                    <label class="form-check-label" for="{{$privilege->role_header}}">Problem loading database</label>
+                @endif          
+            </div>
         </div>
-    </div>
+    @endif 
 @endforeach
 </div>
-
+<br />
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
         <input class="btn btn-primary" type="submit" value="{{ $submitButtonText or 'Create' }}">

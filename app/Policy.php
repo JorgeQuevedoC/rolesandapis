@@ -27,5 +27,9 @@ class Policy extends Model
      */
     protected $fillable = ['policy', 'section_id', 'role1', 'role2', 'role3', 'role4', 'role5', 'role6', 'role7', 'role8', 'role9', 'role10', 'role11', 'role12', 'role13', 'role14', 'role15', 'role16', 'role17', 'role18', 'role19', 'role20', 'role21', 'role22'];
 
+    public function scopeSectionInUse($query, $section_id)
+    {
+        return $query->where('section_id', $section_id);
+    }
     
 }

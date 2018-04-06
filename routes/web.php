@@ -23,3 +23,5 @@ Route::resource('admin/product', 'Admin\\ProductController');
 Route::resource('admin/section', 'Admin\\SectionController');
 Route::resource('admin/privileges', 'Admin\\PrivilegesController');
 Route::resource('admin/policies', 'Admin\\PoliciesController');
+Route::resource('admin/users', 'Admin\\UsersController');
+Route::post('/admin/users/password', 'Admin\\UsersController@sendEmail');

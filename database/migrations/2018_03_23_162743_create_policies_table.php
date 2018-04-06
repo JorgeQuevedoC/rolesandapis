@@ -39,6 +39,19 @@ class CreatePoliciesTable extends Migration
             $table->boolean('role20')->default(false);
             $table->boolean('role21')->default(false);
             $table->boolean('role22')->default(false);
+            $table->boolean('role23')->default(false);
+            $table->boolean('role24')->default(false);
+            $table->boolean('role25')->default(false);
+            $table->boolean('role26')->default(false);
+            $table->boolean('role27')->default(false);
+            $table->boolean('role28')->default(false);
+            $table->boolean('role29')->default(false);
+            $table->boolean('role30')->default(false);
+            $table->boolean('role31')->default(false);
+            $table->boolean('role32')->default(false);
+            $table->boolean('role33')->default(false);
+            $table->boolean('role34')->default(false);
+            $table->boolean('role35')->default(false);
             $table->foreign('section_id')->references('id')->on('sections');
             });
     }

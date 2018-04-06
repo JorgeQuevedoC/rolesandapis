@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             @include('admin.sidebar')
 
@@ -24,7 +24,7 @@
                         <form method="POST" action="{{ url('/admin/privileges') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('admin.privileges.form')
+                            @include ('admin.privileges.formCreate')
 
                         </form>
 

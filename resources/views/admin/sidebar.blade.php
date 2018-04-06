@@ -11,14 +11,17 @@
                         Home
                     </a>
                 </li>
+                @can('index', App\User::class)
                 <li role="presentation">
-                    <a href="{{ url('/admin/product') }}">
-                        Products
+                    <a href="{{ url('/admin/users') }}">
+                        Users
                     </a>
                 </li>
+                @endcan
+                @can('fullAccess', App\Privilege::class)
                 <li role="presentation">
                     <a href="{{ url('/admin/section') }}">
-                        Sections
+                        Policies groups
                     </a>
                 </li>
                 <li role="presentation">
@@ -31,6 +34,7 @@
                         Policies
                     </a>
                 </li>
+                @endcan
             </ul>
         </div>
     </div>

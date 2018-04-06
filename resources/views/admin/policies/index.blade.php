@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             @include('admin.sidebar')
 
@@ -30,14 +30,16 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Policy</th><th>Section Id</th><th>Actions</th>
+                                        <th>Policy</th><th>Section</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($policies as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->policy }}</td><td>{{ $item->section_id }}</td>
+                                        @php
+                                            $section = DB::table('sections')->where('id', $item->section_id)->first(); 
+                                        @endphp
+                                        <td>{{ $item->policy }}</td><td>{{ strtoupper($section->section) }}</td>
                                         <td>
                                             <a href="{{ url('/admin/policies/' . $item->id) }}" title="View Policy"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/policies/' . $item->id . '/edit') }}" title="Edit Policy"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

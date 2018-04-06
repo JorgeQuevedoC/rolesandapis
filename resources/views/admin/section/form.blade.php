@@ -1,5 +1,5 @@
 <div class="form-group {{ $errors->has('section') ? 'has-error' : ''}}">
-    <label for="section" class="col-md-4 control-label">{{ 'Section' }}</label>
+    <label for="section" class="col-md-4 control-label">{{ 'Policy group' }}</label>
     <div class="col-md-6">
         <input class="form-control" name="section" type="text" id="section" value="{{ $section->section or ''}}" >
         {!! $errors->first('section', '<p class="help-block">:message</p>') !!}

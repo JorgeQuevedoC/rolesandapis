@@ -7,7 +7,8 @@
 </div><div class="form-group {{ $errors->has('role_header') ? 'has-error' : ''}}">
     <label for="role_header" class="col-md-4 control-label">{{ 'Role Header' }}</label>
     <div class="col-md-6">
-        <input class="form-control" name="role_header" type="text" id="role_header" value="{{ $privilege->role_header or ''}}" >
+        <input class="form-control" name="role_header2" type="text" id="role_header2" value="{{ $privilege->role_header or ''}}" disabled>
+        <input class="form-control" name="role_header" type="text" id="role_header" value="{{ $privilege->role_header or ''}}" style="display:none;">
         {!! $errors->first('role_header', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

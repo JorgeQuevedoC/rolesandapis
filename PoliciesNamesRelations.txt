@@ -1,0 +1,6 @@
+
+createProduct, create product button in product/index.blade.php, store method ProductController, create method ProductController
+indexProduct, index method ProductController
+deleteProduct, delete product button in product/index.blade.php, destroy method ProductController
+updateProduct, edit product button in product/index.blade.php, update method ProductController, edit method ProductController
+viewProduct, view product button in product/index.blade.php, show method ProductController

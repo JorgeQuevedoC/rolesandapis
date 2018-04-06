@@ -10,8 +10,6 @@ use Illuminate\Http\Request;
 
 class PoliciesController extends Controller
 {
-
-
     /**
      * Create a new controller instance.
      *
@@ -30,7 +28,7 @@ class PoliciesController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
-        $perPage = 25;
+        $perPage = 15;
 
         if (!empty($keyword)) {
             $policies = Policy::where('policy', 'LIKE', "%$keyword%")
@@ -158,4 +156,6 @@ class PoliciesController extends Controller
 
         return redirect('admin/policies')->with('flash_message', 'Policy deleted!');
     }
+
+    
 }

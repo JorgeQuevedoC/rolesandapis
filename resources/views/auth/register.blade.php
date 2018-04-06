@@ -25,15 +25,17 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="privilege" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                        <div class="form-group row" style='display:none' >
+                            <label for="privilege" class="col-md-4 col-form-label text-md-right">Privilege ID</label>
 
-                            <div class="col-md-6">
-                                <select id="privilege" type="number" class="form-control" name="privilege" required>
-                                    @foreach (DB::table('privileges')->selectRaw('*')->get() as $privilege)
-                                        <option value={{$privilege->id}}>{{strtoupper($privilege->privilege)}}</option>
-                                    @endforeach
-                                </select> 
+                            <div class="col-md-6" >
+                                <input id="privilege" type="number" class="form-control{{ $errors->has('privilege') ? ' is-invalid' : '' }}" name="privilege" value=22 required >
+
+                                @if ($errors->has('privilege'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('privilege') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 

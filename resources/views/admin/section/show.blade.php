@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             @include('admin.sidebar')
             
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Section {{ $section->id }}</div>
+                    <div class="card-header">Policies groups {{ $section->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/admin/section') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -27,7 +27,7 @@
                                     <tr>
                                         <th>ID</th><td>{{ $section->id }}</td>
                                     </tr>
-                                    <tr><th> Section </th><td> {{ $section->section }} </td></tr>
+                                    <tr><th> Policies group </th><td> {{ $section->section }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

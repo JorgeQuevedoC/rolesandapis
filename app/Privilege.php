@@ -27,5 +27,19 @@ class Privilege extends Model
      */
     protected $fillable = ['privilege', 'role_header'];
 
+    public function scopeWithoutEmpty($query)
+    {
+        return $query->where('privilege','!=', 'empty');
+    }
+
+    public function scopeGetCount($query)
+    {
+        return $query->count();
+    }
+
+    public function scopeGetCountWithoutEmpty($query)
+    {
+        return $query->where('privilege','!=', 'empty')->count();
+    }
     
 }

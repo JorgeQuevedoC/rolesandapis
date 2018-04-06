@@ -21,17 +21,23 @@ $sections = DB::table('sections')->selectRaw('*')->get();
         {!! $errors->first('section_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<br />
+
 <!--*********************************************  MY CHECKBOXES  *********************************************-->
 <div class="row">
 @foreach ($roles as $privilege)
-    <div class="col-md-4">
-        <div class="form-group form-check form-check-inline">
-            <input class="form-check-input" name="{{$privilege->role_header}}" type="checkbox" id="{{$privilege->role_header}}" value=1>
-            <label class="form-check-label" for="{{$privilege->role_header}}">{{strtoupper($privilege->privilege)}}</label>
+    @if ($privilege->privilege != 'empty')
+        <div class="col-md-4">
+            <div class="form-group form-check form-check-inline">
+                <input class="form-check-input" name="{{$privilege->role_header}}" type="checkbox" id="{{$privilege->role_header}}" value=1>
+                <label class="form-check-label" for="{{$privilege->role_header}}">{{strtoupper($privilege->privilege)}}</label>
+            </div>
         </div>
-    </div>
+    @endif
 @endforeach
 </div>
+
+<br />
 
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">

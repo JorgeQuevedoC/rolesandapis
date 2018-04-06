@@ -120,5 +120,70 @@ class PrivilegesTableSeeder extends Seeder
             'role_header' => 'role22',
             'privilege' => 'cst customer',
         ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role23',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role24',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role25',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role26',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role27',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role28',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role29',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role30',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role31',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role32',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role33',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role34',
+            'privilege' => 'empty',
+        ]);
+
+        DB::table('privileges')->insert([
+            'role_header' => 'role35',
+            'privilege' => 'empty',
+        ]);
     }
 }
