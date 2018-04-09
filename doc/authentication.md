@@ -4,7 +4,7 @@
 
 First run the artisan command
 ```sh
-php artisan make auth
+php artisan make:auth
 ```
 
 > The last command will generate: Controller, routes and views for the current user model and migration.
