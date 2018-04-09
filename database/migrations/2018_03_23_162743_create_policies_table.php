@@ -53,7 +53,7 @@ class CreatePoliciesTable extends Migration
             $table->boolean('role34')->default(false);
             $table->boolean('role35')->default(false);
             $table->foreign('section_id')->references('id')->on('sections');
-            });
+        });
     }
 
     /**
