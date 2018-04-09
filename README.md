@@ -19,79 +19,137 @@ This tutorial will show how to implement and configure a restful API service to 
 
 ## Set up
 
-Create the models and the migrations, in this case we will create a **Product** model and migration.
+Create the models and the migrations, in this case we will create a **Policy** model and migration.
 
 Run this command in your shell that is in the current project folder:
 
 ```sh
-php artisan make:model Product -m
+php artisan make:model Policy -m
 ```
 
->The -m option stands for migration and let us create the migration file for our Products model.
+>The -m option stands for migration and let us create the migration file for our Policy model.
 
-Go to your "Product" migration file, tipically located at _database/migrations_ , in the form of _2018_03_20_create_products_table.php_ (the date in the name will vary), and add these fields:
+Go to your "policies" migration file, tipically located at _database/migrations_ , in the form of _2018_03_20_create_policies_table.php_ (the date in the name will vary), and add these fields:
 
 ```PHP
 public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+            public function up()
+    {
+        Schema::create('policies', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('name')->nullable();
-            $table->text('description')->nullable();
-            $table->string('code')->nullable();
-            $table->double('buyPrice')->nullable();
-            $table->double('sellPrice')->nullable();
-            });
+            $table->string('policy')->nullable();
+            $table->integer('section_id')->unsigned();
+            $table->boolean('role1')->default(false);
+            $table->boolean('role2')->default(false);
+            $table->boolean('role3')->default(false);
+            $table->boolean('role4')->default(false);
+            $table->boolean('role5')->default(false);
+            $table->boolean('role6')->default(false);
+            $table->boolean('role7')->default(false);
+            $table->boolean('role8')->default(false);
+            $table->boolean('role9')->default(false);
+            $table->boolean('role10')->default(false);
+            $table->boolean('role11')->default(false);
+            $table->boolean('role12')->default(false);
+            $table->boolean('role13')->default(false);
+            $table->boolean('role14')->default(false);
+            $table->boolean('role15')->default(false);
+            $table->boolean('role16')->default(false);
+            $table->boolean('role17')->default(false);
+            $table->boolean('role18')->default(false);
+            $table->boolean('role19')->default(false);
+            $table->boolean('role20')->default(false);
+            $table->boolean('role21')->default(false);
+            $table->boolean('role22')->default(false);
+            $table->boolean('role23')->default(false);
+            $table->boolean('role24')->default(false);
+            $table->boolean('role25')->default(false);
+            $table->boolean('role26')->default(false);
+            $table->boolean('role27')->default(false);
+            $table->boolean('role28')->default(false);
+            $table->boolean('role29')->default(false);
+            $table->boolean('role30')->default(false);
+            $table->boolean('role31')->default(false);
+            $table->boolean('role32')->default(false);
+            $table->boolean('role33')->default(false);
+            $table->boolean('role34')->default(false);
+            $table->boolean('role35')->default(false);
+            $table->foreign('section_id')->references('id')->on('sections');
+        });
     }
 ```
 
-Finally go to app/Product.php model file and add these attributes to the $fillable variable:
+Finally go to app/Policy.php model file and add these attributes to the $fillable variable:
 
 ```php
-protected $fillable = ['name', 'description', 'code', 'buyPrice', 'sellPrice'];
+/**
+ * Attributes that should be mass-assignable.
+ *
+ * @var array
+    */
+protected $fillable = ['policy', 'section_id', 'role1', 'role2', 'role3', 'role4', 'role5', 'role6', 'role7', 'role8', 'role9', 'role10', 'role11', 'role12', 'role13', 'role14', 'role15', 'role16', 'role17', 'role18', 'role19', 'role20', 'role21', 'role22'];
 ```
 
-## Seeding the Products table
+## Seeding the Policies table
 
-We will create a simple seeder file to fill the products table and retrieve the data later on:
+We will create a simple seeder file to fill the policies table and retrieve the data later on:
 
 ```sh
- php artisan make:seeder ProductsTableSeeder
+ php artisan make:seeder PoliciesTableSeeder
 ```
 
-Go to /database/seeds/ProductsTableSeeder.php and copy:
+Go to **database/seeds/PoliciesTableSeeder.php** and copy:
 
 ```php
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Product;
+use App\Policy;
 
-class ProductsTableSeeder extends Seeder
+class PoliciesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+public function run()
     {
-        // truncate to start from 0 everytime.
-        Product::truncate();
+        //USERS CRUD
+        DB::table('policies')->insert([
+            'policy' => 'indexUser',
+            'section_id' => '1',
+            'role1'=>'1'
+        ]);
+        DB::table('policies')->insert([
+            'policy' => 'createUser',
+            'section_id' => '1',
+            'role1'=>'1'
+        ]);
+        DB::table('policies')->insert([
+            'policy' => 'updateUser',
+            'section_id' => '1',
+            'role1'=>'1'
+        ]);
+        DB::table('policies')->insert([
+            'policy' => 'readUser',
+            'section_id' => '1',
+            'role1'=>'1'
+        ]);
+        DB::table('policies')->insert([
+            'policy' => 'deleteUser',
+            'section_id' => '1',
+            'role1'=>'1'
+        ]);
 
-        $faker = \Faker\Factory::create();
-
-        for ($i = 0; $i < 5; $i++)
-        {
-            Product::create([
-                'name' => $faker->word,
-                'description' => $faker->text,
-                'code' => $faker->md5,
-                'buyPrice' => $faker->randomDigit,
-                'sellPrice' => $faker->RandomDigit
-            ]);
-        }
+        //FULL ACCESS (SECTIONS & POLICIES)
+        DB::table('policies')->insert([
+            'policy' => 'fullAccess',
+            'section_id' => '1',
+            'role1'=>'1'
+        ]);
     }
 }
 ```
@@ -99,7 +157,7 @@ class ProductsTableSeeder extends Seeder
 Run the command to seed:
 
 ```sh
-php artisan db:seed --class=ProductsTableSeeder
+php artisan db:seed --class=PoliciesTableSeeder
 ```
 
 ## Creating the controller for the API
@@ -109,10 +167,10 @@ Now we will create our controller and the endpoints inside routes/api.php, to ac
 First we will create the controller:
 
 ```sh
-php artisan make:controller ProductController
+php artisan make:controller PolicyController
 ```
 
-Inside app/Http/Controllers/ProductController.php, copy:
+Inside app/Http/Controllers/PolicyController.php, copy:
 
 ```php
 <?php
@@ -120,46 +178,46 @@ Inside app/Http/Controllers/ProductController.php, copy:
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Policy;
 
-class ProductController extends Controller
+class PolicyController extends Controller
 {
-    /** Using the variable {product} in the API, is possible
+    /** Using the variable {policy} in the API, is possible
      * to use implicit route
      * model binding which makes easier the query for a
-     * specific product inside the controller
+     * specific policy inside the controller
     */
     public function index()
     {
-        return Product::all();
+        return Policy::all();
     }
 
-    public function show(Product $product)/** The argument is the ID*/
+    public function show(Policy $policy)/** The argument is the ID*/
     {
-        return $product;
+        return $policy;
     }
 
     public function store(Request $req)
     {
-        $product = Product::create($req->all());
-        return response()->json($product, 201);
+        $policy = Policy::create($req->all());
+        return response()->json($policy, 201);
     }
 
-    public function update(Request $req, Product $product)
+    public function update(Request $req, Policy $policy)
     {
-        $product->update($req->all());
-        // $product->name = $request->input('name');
-        // $product -> save();
-        return response()->json($product, 200);
+        $policy->update($req->all());
+        // $policy->name = $request->input('name');
+        // $policy -> save();
+        return response()->json($policy, 200);
     }
 
-    public function delete(Product $product)
+    public function delete(Policy $policy)
     {
-        $product->delete();
+        $policy->delete();
 
         $data = array(
             'message' => 'Deleted',
-            'id' => $product->id
+            'id' => $policy->id
         );
         return response()->json($data,200);
     }
@@ -169,21 +227,21 @@ class ProductController extends Controller
 Now go to **routes/api.php** and copy:
 
 ```PHP
-/** Using the variable {product}, is possible to use implicit route
+/** Using the variable {policy}, is possible to use implicit route
  * model binding which makes easier the query for a
- * specific product ID inside the controller
+ * specific policy ID inside the controller
 */
-Route::get('products','ProductController@index');
-Route::get('products/{product}','ProductController@show');
-Route::post('products','ProductController@store');
-Route::put('products/{product}','ProductController@update');
-Route::delete('products/{product}','ProductController@delete');
+Route::get('policies','PolicyController@index');
+Route::get('policies/{policy}','PolicyController@show');
+Route::post('policies','PolicyController@store');
+Route::put('policies/{policy}','PolicyController@update');
+Route::delete('policies/{policy}','PolicyController@delete');
 ```
 
 To make a test you can use [postman](https://www.getpostman.com) or curl in your terminal. For curl in your terminal with python, use:
 
 ```sh
-curl -X GET http://localhost:8001/api/products | python -m json.tool
+curl -X GET http://localhost:8001/api/policies | python -m json.tool
 ```
 
 ## Sending 404 NOT FOUND, the right way
@@ -317,26 +375,15 @@ Now go to **resources/views/home.blade.php** and copy:
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-                <passport-clients></passport-clients>
-                <passport-authorized-clients></passport-authorized-clients>
-                <passport-personal-access-tokens></passport-personal-access-tokens>
-            </div>
+            <br>
+            <passport-clients></passport-clients>
+            <br>
+            <passport-authorized-clients></passport-authorized-clients>
+            <br>
+            <passport-personal-access-tokens></passport-personal-access-tokens>
         </div>
     </div>
 </div>
-@endsection
 ```
 
 ### **Creating a consumer client application**
@@ -434,15 +481,15 @@ Route::group(['middleware' => 'auth:api'], function(){
         return $request->user();
     });
 
-    /** Using the variable {product}, is possible to use implicit route
+    /** Using the variable {policy}, is possible to use implicit route
      * model binding which makes easier the query for a
      * specific model inside the controller
     */
-    Route::get('products','ProductController@index');
-    Route::get('products/{product}','ProductController@show');
-    Route::post('products','ProductController@store');
-    Route::put('products/{product}','ProductController@update');
-    Route::delete('products/{product}','ProductController@delete');
+    Route::get('policies','PolicyController@index');
+    Route::get('policies/{policy}','PolicyController@show');
+    Route::post('policies','PolicyController@store');
+    Route::put('policies/{policy}','PolicyController@update');
+    Route::delete('policies/{policy}','PolicyController@delete');
 });
 ```
 
@@ -450,7 +497,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 Go to Postman and create a get request, in authorization select Bearer token, copy the token and in Headers, click on bulk edit and type the following: **Accept:application/json**.
 
->An example of a GET address is <http://localhost:8001/api/products>
+>An example of a GET address is <http://localhost:8001/api/policies>
 
 ## Useful Links
 
