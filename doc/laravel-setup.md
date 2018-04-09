@@ -20,9 +20,9 @@ composer install
 ```
 Now, create a database in your mysql server
 ```sh
-mysql -u user -ppassword
+mysql -u [userName] -p[yourPassword]
 
-create database compraventa;
+create database [databaseName];
 ```
 Open your .env.examples and save it as .env
 ```sh
