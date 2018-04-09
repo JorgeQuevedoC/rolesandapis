@@ -17,13 +17,12 @@ This tutorial will show how to implement and configure a restful API service to 
 
 >This tutorial assumes that you are using Laravel 5.6.0 and that you have previous experience using Laravel and PHP.
 
-To start the development follow the next steps:
+## Table of Contents
 
-[1. Laravel set up and database configuration](doc/laravel-setup.md)
+1. [Laravel set up and database configuration](doc/laravel-setup.md)
 
-[2. Crud-generator package configuration](doc/crud-generator.md)
+2. [Crud-generator package configuration](doc/crud-generator.md)
 
-[3. Implementation of auth](doc/authentication.md)
+3. [Implementation of auth](doc/authentication.md)
 
-[4. Passport set up and api](doc/passport.md)
-
+4. [Passport set up and api](doc/passport.md)
